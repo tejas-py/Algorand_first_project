@@ -1,0 +1,27 @@
+#pragma version 5
+txn ApplicationID
+int 0
+==
+bnz main_l2
+err
+main_l2:
+txn NumAppArgs
+int 4
+==
+bnz main_l4
+err
+main_l4:
+byte "name"
+txna ApplicationArgs 0
+app_global_put
+byte "email_id"
+txna ApplicationArgs 1
+app_global_put
+byte "userType"
+txna ApplicationArgs 2
+app_global_put
+byte "sign_up"
+txna ApplicationArgs 3
+app_global_put
+int 1
+return
